@@ -5,51 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="../src/output.css" rel="stylesheet">
+    <!-- npx.cmd @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
     
 
-    <title>Document</title>
+    <title>Salles Doceria</title>
 </head>
 <body>
-    <nav class="flex justify-between items-center px-10 py-4 shadow-sm bg-white">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-20 py-4 transition-all duration-300 bg-white border-b border-rose-100">
 
         <span class="text-red-600 font-bold text-xl">Salles Doceria</span>
 
-        <ul class="flex gap-8 list-none">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#doces">Doces</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
+        <!--! Botão hamburguer -->
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 cursor-pointer">
+            <span class="w-6 h-0.5 bg-gray-800 block"></span>
+            <span class="w-6 h-0.5 bg-gray-800 block"></span>
+            <span class="w-6 h-0.5 bg-gray-800 block"></span>
+        </button>
+
+        <!--? Menu para PC -->
+        <ul class="hidden md:flex gap-8 list-none">
+            <li><a href="#inicio" class="hover:text-red-600">Início</a></li>
+            <li><a href="#doces" class="hover:text-red-600">Doces</a></li>
+            <li><a href="#sobre" class="hover:text-red-600">Sobre</a></li>
+            <li><a href="#contato" class="hover:text-red-600">Contato</a></li>
         </ul> 
 
     </nav>
 
-    <section id="inicio" class="flex items-center justify-between px-20 py-16 bg-rose-50 min-h-screen">
+    <!--! Menu para mobile  -->
+    <div id="menu-mobile" class="hidden md:hidden bg-white shadow-md px-6 py-4">
+        <ul class="flex flex-col gap-4 list-none">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#doces">Doces</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
 
-        <div class="max-w-lg">
-            <h1 class="text-5xl font-bold text-gray-900 leading-tight">
+    <section id="inicio" class="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-10 md:py-16 bg-rose-50 min-h-screen pt-20">
+
+        <div class="max-w-lg text-center md:text-left w-full md:w-auto">
+
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
                 Adoçando a sua vida com
                 <span class="text-red-500">amor </span>e
                 <span class="text-red-500">sabor.</span>
             </h1>
 
-            <p class="mt-6 text-gray-600 text-lg">
+            <p class="mt-6 text-gray-600 text-base">
                 Bem vindo á Salles Doceria! Preparamos brigadeiros, copos da felicidade e muito mais...
             </p>
 
-            <button class="mt-8 bg-red-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600">
-                Ver Nossos Produtos
-            </button>
+            <div class="flex justify-center md:justify-start">
+                <button class="mt-8 bg-red-500 text-white px-8 py-4 rounded-full font-semibold border-2 border-red-600 hover:bg-white hover:text-red-600 transition-all duration-300">
+                    Ver Nossos Produtos
+                </button>
+            </div>
 
         </div>
 
-        <div>
-            <img 
-                src="/img/imagem_de_capa.png" 
-                alt="Vitrine de doces"
-                class="rounded-2xl w-96 h-80 object-cover shadow-lg">
-        </div>
+        <div class="relative w-72 md:w-96 h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg bg-rose-100">
 
+            <div class="relative w-full md:w-96 h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg">
+                <img src="/img/imagem_de_capa.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700">
+                <img src="/img/copodafelicidade.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+                <img src="/img/copodafelicidade4.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+                <img src="/img/tortadelimao.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+                <img src="/img/copodafelicidade3.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+            </div>
+
+            <!-- Indicadores -->
+            <div id="dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2"></div>
+        </div>
 
     </section>
+
+    <script>
+
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu-mobile');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        })
+
+        const imgs = document.querySelectorAll('.carrossel-img');
+        const dotsContainer = document.getElementById('dots');
+        let atual = 0;
+
+        imgs.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-white' : 'bg-white/50'}`;
+            dot.addEventListener('click', () => irPara(i));
+            dotsContainer.append(dot)
+        });
+
+        function irPara(index) {
+            imgs[atual].classList.replace('opacity-100', 'opacity-0');
+            dotsContainer.children[atual].classList.replace('bg-white', 'bg-white/50');
+
+            atual = index;
+
+            imgs[atual].classList.replace('opacity-0', 'opacity-100');
+            dotsContainer.children[atual].classList.replace('bg-white/50', 'bg-white');
+        }
+
+        // Troca automática a cada 3 segundos
+        setInterval(() => {
+            irPara((atual + 1) % imgs.length);
+        }, 3000);
+
+
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                // Quando rolar para baixo -> fundo branco com sombra
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                // No topo -> transparente
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('shadow-lg', 'backdrop-blur-sm', 'bg-white/80');
+            }
+        });
+    </script>
+
 </body>
 </html>
