@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../src/output.css" rel="stylesheet">
+    <!-- <link href="../src/output.css" rel="stylesheet"> -->
     <!-- npx.cmd @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
 
     <title>Salles Doceria</title>
@@ -24,7 +25,7 @@
 
         <!--? Menu para PC -->
         <ul class="hidden md:flex gap-8 list-none">
-            <li><a href="#inicio" class="hover:text-red-600">Início</a></li>
+            <li><a href="#inicio" class="hover:text-red-600">Inicio</a></li>
             <li><a href="#doces" class="hover:text-red-600">Doces</a></li>
             <li><a href="#sobre" class="hover:text-red-600">Sobre</a></li>
             <li><a href="#contato" class="hover:text-red-600">Contato</a></li>
@@ -33,12 +34,12 @@
     </nav>
 
     <!--! Menu para mobile  -->
-    <div id="menu-mobile" class="hidden md:hidden bg-white shadow-md px-6 py-4">
+    <div id="menu-mobile" class="hidden fixed top-16 left-0 right-0 z-40 bg-white shadow-md px-6 py-4">
         <ul class="flex flex-col gap-4 list-none">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#doces">Doces</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#inicio" class="hover:text-red-600">Inicio</a></li>
+            <li><a href="#doces" class="hover:text-red-600">Doces</a></li>
+            <li><a href="#sobre" class="hover:text-red-600">Sobre</a></li>
+            <li><a href="#contato" class="hover:text-red-600">Contato</a></li>
         </ul>
     </div>
 
@@ -52,8 +53,10 @@
                 <span class="text-red-500">sabor.</span>
             </h1>
 
-            <p class="mt-6 text-gray-600 text-base">
-                Bem vindo á Salles Doceria! Preparamos brigadeiros, copos da felicidade e muito mais...
+            <p class="mt-6 text-gray-600 text-base leading-relaxed">
+                Bem vindo à Salles Doceria! Somos uma doceria artesanal apaixonada por criar momentos doces e especiais. 
+                Preparamos brigadeiros, copos da felicidade, tortas e muito mais, tudo feito com carinho e ingredientes 
+                selecionados para adoçar o seu dia!
             </p>
 
             <div class="flex justify-center md:justify-start">
@@ -64,21 +67,21 @@
 
         </div>
 
-        <div class="relative w-72 md:w-96 h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg bg-rose-100">
-
             <div class="relative w-full md:w-96 h-64 md:h-80 rounded-2xl overflow-hidden shadow-lg">
                 <img src="/img/imagem_de_capa.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700">
                 <img src="/img/copodafelicidade.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
                 <img src="/img/copodafelicidade4.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
                 <img src="/img/tortadelimao.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
                 <img src="/img/copodafelicidade3.png" class="carrossel-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+            
+                <!-- Indicadores -->
+                <div id="dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2"></div>
             </div>
 
-            <!-- Indicadores -->
-            <div id="dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2"></div>
         </div>
 
     </section>
+    
     <script src="/frontend/script.js"></script>
 </body>
 </html>

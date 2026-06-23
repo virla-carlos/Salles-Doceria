@@ -43,4 +43,3 @@ window.addEventListener('scroll', () => {
         navbar.classList.add('bg-transparent');
     }
 });
-
