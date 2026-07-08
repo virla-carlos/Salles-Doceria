@@ -4,8 +4,9 @@
   "description": "Estou criando um site para uma doceria. Utilizei o Figma para gerar um layout para o meu site. Estou tentando desenvolver com o pouco que eu conheço e estou utilizando I.A. para me ajudar em algumas partes do site, pois não sei muito de HTML e CSS, por isso, estou realizando alguns projetos  para me aperfeiçoar mais.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "build": "tailwindcss -i ./src/input.css -o ./frontend/css/output.css --minify",
+  "dev": "tailwindcss -i ./src/input.css -o ./frontend/css/output.css --watch"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/virla-carlos/Salles-Doceria.git"
