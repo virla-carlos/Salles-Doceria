@@ -81,7 +81,7 @@ function atualizarCarrinho() {
 
                     <button    
                         onclick="alterarQuantidade('${item.nome}', -1)" 
-                        class="w-7 h-7 rounded-full  text-gray-600 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-200 cursor-pointer">
+                        class="w-7 h-7 rounded-full border border-gray-300 bg-gray-50 text-gray-600 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-200 cursor-pointer">
                         -
                     </button>
 
@@ -89,7 +89,7 @@ function atualizarCarrinho() {
 
                     <button 
                         onclick="alterarQuantidade('${item.nome}', 1)"
-                        class="w-7 h-7 rounded-full text-gray-600 hover:text-white hover:border-green-500 transition-all duration=200 cursor-pointer">
+                        class="w-7 h-7 rounded-full border border-gray-300 bg-gray-50 text-gray-600 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration=200 cursor-pointer">
                         +
                     </button>
 
@@ -121,14 +121,10 @@ function atualizarLinkWhatsApp(totalValor) {
     let mensagem = 'Olá! Bom dia, gostaria de realizar um pedido: %0A%0A';
 
     carrinho.forEach(item => {
-        mensagem += `🍫 ${item.nome} x${item.quantidade} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.','.')}%0A`;
+        mensagem += `${item.nome} x${item.quantidade} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.','.')}%0A`;
     });
 
-    mensagem += `%0A*Total: R$ ${totalValor.toFixed(2).replace('.','.')}*`;
-
-    if (carrinho === null) {
-        
-    } 
+    mensagem += `%0A*Total: R$ ${totalValor.toFixed(2).replace(',',',')}*`;
 
     btnFinalizar.href = `https://wa.me/5521991398370?text=${mensagem}`;
 }
