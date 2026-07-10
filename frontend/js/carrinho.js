@@ -16,8 +16,21 @@ function fecharCarrinho() {
     document.getElementById('overlay-carrinho').classList.add('hidden');
 }
 
-//! adicionando item ao carrinho (tem algo impedindo o item de aparecer no carrinho)
-//? aparentemente está correto, mas eu tenho certeza que tem coisa errada
+document.getElementById('btn-finalizar').addEventListener('click', () => {
+    if (carrinho.length === 0){
+        const lista = document.getElementById('lista-carrinho');
+        lista.innerHTML = `
+            <div class="flex flex-col items-center justify-center h-full text-gray-400">
+                <span class="text-5xl mb-4">⚠️</span>
+                <p class="text-lg text-red-500 font-semibold">Carrinho vazio!</p>
+                <p class="text-sm mt-1 text-gray-400">Adicione produtos antes de finalizar</p>
+            </div>`;
+        return;
+    }
+    window.open(document.getElementById('btn-finalizar').dataset.link, '_blank');
+});
+
+//! adicionando item ao carrinho
 function adicionarAoCarrinho(nome, preco) {
 
     const produtoExistente = carrinho.find(item => item.nome === nome);
@@ -36,6 +49,7 @@ function adicionarAoCarrinho(nome, preco) {
 
 //! interface do carrinho
 //? Foi realizada uma correção no erro do carrinho do site
+//? Até o momento funcionando corretamente depois de realizar a alteração na linha
 
 function atualizarCarrinho() {
     const lista = document.getElementById('lista-carrinho');
@@ -89,7 +103,7 @@ function atualizarCarrinho() {
 
                     <button 
                         onclick="alterarQuantidade('${item.nome}', 1)"
-                        class="w-7 h-7 rounded-full border border-gray-300 bg-gray-50 text-gray-600 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration=200 cursor-pointer">
+                        class="w-7 h-7 rounded-full border border-gray-300 bg-gray-50 text-gray-600 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-200 cursor-pointer">
                         +
                     </button>
 
@@ -121,10 +135,13 @@ function atualizarLinkWhatsApp(totalValor) {
     let mensagem = 'Olá! Bom dia, gostaria de realizar um pedido: %0A%0A';
 
     carrinho.forEach(item => {
-        mensagem += `${item.nome} x${item.quantidade} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.','.')}%0A`;
+        const subtotal = (item.preco * item.quantidade).toFixed(2).replace('.',',');
+        const precoUnit = item.preco.toFixed(2).replace('.',',');
+        mensagem += `${item.nome}%0A`;
+        mensagem += `Qtd: ${item.quantidade} x R$ ${precoUnit} = R$ ${subtotal}%0A%0A`;
     });
 
-    mensagem += `%0A*Total: R$ ${totalValor.toFixed(2).replace(',',',')}*`;
+    mensagem += `%0A*Valor Total: R$ ${totalValor.toFixed(2).replace('.','.')}*`;
 
-    btnFinalizar.href = `https://wa.me/5521991398370?text=${mensagem}`;
+    btnFinalizar.dataset.link = `https://wa.me/5521991398370?text=${mensagem}`;
 }
