@@ -143,5 +143,5 @@ function atualizarLinkWhatsApp(totalValor) {
 
     mensagem += `%0A*Valor Total: R$ ${totalValor.toFixed(2).replace('.','.')}*`;
 
-    btnFinalizar.dataset.link = `https://wa.me/5521991398370?text=${mensagem}`;
+    btnFinalizar.dataset.link = `https://wa.me/5521975848155?text=${mensagem}`;
 }
