@@ -1,29 +1,31 @@
 # 🍰 Salles Doceria
 
-Projeto de uma página web para divulgação de uma doceria fictícia, desenvolvido com o objetivo de praticar **HTML**, **CSS**, **Tailwind CSS** e futuramente **JavaScript**.
+Projeto de uma página web desenvolvida para a **Salles Doceria**, com o objetivo de apresentar seus produtos, facilitar o contato com os clientes e permitir a realização de pedidos através do WhatsApp.
 
-A ideia do projeto é criar uma interface moderna, responsiva e agradável para apresentar a Salles Doceria, seus produtos, informações sobre a loja e formas de contato.
+O projeto foi desenvolvido utilizando **HTML**, **CSS**, **Tailwind CSS** e **JavaScript**, com foco em uma interface moderna, responsiva e de fácil utilização.
 
 ---
 
 ## 📌 Sobre o projeto
 
-A **Salles Doceria** é um projeto de estudo voltado para o desenvolvimento Front-end.
+A **Salles Doceria** é um projeto web desenvolvido para apresentar os produtos da doceria e facilitar o processo de realização de pedidos.
 
-A página está sendo construída de forma progressiva, com foco em boas práticas de estruturação HTML, estilização com Tailwind CSS, organização de arquivos e responsividade para diferentes dispositivos.
+O site está sendo construído de forma progressiva, seguindo boas práticas de organização, responsividade e experiência do usuário.
+
+Atualmente, o cliente pode visualizar os produtos disponíveis, adicionar itens ao carrinho, alterar suas quantidades, remover produtos e finalizar o pedido através do WhatsApp.
 
 O site conta com as seguintes seções:
 
 - 🏠 **Início** — Hero section com carrossel de imagens e chamada para ação
-- 🍫 **Doces** — Vitrine de produtos da doceria
-- 📖 **Sobre** — História e diferenciais da loja
-- 📞 **Contato** — Formas de entrar em contato
+- 🍫 **Doces** — Vitrine com os produtos disponíveis na doceria
+- 📖 **Sobre** — História e diferenciais da Salles Doceria
+- 📞 **Contato** — Informações e formas de entrar em contato com a doceria
 
 ---
 
 ## 🚀 Tecnologias e ferramentas utilizadas
 
-[![My Skills](https://skillicons.dev/icons?i=figma,html,css,tailwind,nodejs,npm,git,github,vscode)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=figma,html,css,tailwind,js,nodejs,npm,git,github,vscode)](https://skillicons.dev)
 
 ---
 
@@ -33,14 +35,26 @@ O site conta com as seguintes seções:
 Salles-Doceria/
 │
 ├── frontend/
+│   ├── css/
+│   │   └── output.css
+│   │
+│   ├── img/
+│   │   └── imagens utilizadas no projeto
+│   │
+│   ├── js/
+│   │   └── arquivos JavaScript
+│   │
 │   └── index.html
 │
-├── img/
-│   └── imagens utilizadas no projeto
-│
 ├── src/
-│   ├── input.css
-│   └── output.css
+│   └── input.css
+│
+├── docs/
+│   ├── 00-README.md
+│   ├── 01-glossario.md
+│   ├── 02-escopo.md
+│   ├── 03-requisitos.md
+│   └── funcionalidades/
 │
 ├── .gitignore
 ├── package.json
@@ -52,7 +66,7 @@ Salles-Doceria/
 
 ## ⚙️ Como executar o projeto
 
-Para rodar o projeto na sua máquina, siga os passos abaixo:
+Para executar o projeto localmente, siga os passos abaixo:
 
 ### 1. Clone o repositório
 
@@ -74,65 +88,97 @@ npm install
 
 ### 4. Rode o Tailwind CSS
 
-No **PowerShell**, caso o comando `npx` apresente erro de política de execução, use:
+No **PowerShell**, caso o comando `npx` apresente erro relacionado à política de execução, utilize:
 
 ```bash
-npx.cmd @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+npx.cmd @tailwindcss/cli -i ./src/input.css -o ./frontend/css/output.css --watch
 ```
 
 No **CMD**, **Git Bash** ou outros terminais:
 
 ```bash
-npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+npx @tailwindcss/cli -i ./src/input.css -o ./frontend/css/output.css --watch
 ```
 
-> O `--watch` faz o Tailwind observar os arquivos HTML automaticamente e atualizar o `output.css` a cada alteração.
+> O `--watch` mantém o Tailwind observando as alterações realizadas durante o desenvolvimento e atualiza automaticamente o arquivo CSS gerado.
 
 ### 5. Abra o projeto no navegador
+
+Abra o arquivo:
 
 ```text
 frontend/index.html
 ```
 
-Abra manualmente no navegador ou use a extensão **Live Server** no VS Code.
+O projeto também pode ser executado utilizando a extensão **Live Server** no VS Code.
 
 ---
 
 ## ✅ Funcionalidades implementadas
 
-- [x] Navbar fixa com efeito de transparência ao rolar
-- [x] Menu hamburguer para dispositivos móveis
-- [x] Hero section com carrossel de imagens automático
-- [x] Layout responsivo para mobile e desktop
-- [x] Botão com efeito hover personalizado
-- [x] Transições e animações com Tailwind CSS
+- [x] Navbar fixa com efeito de transparência ao rolar a página
+- [x] Menu responsivo para dispositivos móveis
+- [x] Hero section com carrossel automático de imagens
+- [x] Layout responsivo para dispositivos móveis e desktop
+- [x] Botões com efeitos de interação
+- [x] Transições e animações utilizando Tailwind CSS
+- [x] Seção de produtos com cards
+- [x] Exibição de nome, descrição, preço e tamanho dos produtos
+- [x] Seção Sobre com informações da doceria
+- [x] Seção de Contato
+- [x] Links para contato e redes sociais
+- [x] Carrinho de compras
+- [x] Adição de produtos ao carrinho
+- [x] Alteração da quantidade dos produtos no carrinho
+- [x] Remoção de produtos do carrinho
+- [x] Atualização automática do valor total do pedido
+- [x] Validação de carrinho vazio
+- [x] Finalização do pedido através do WhatsApp
+- [x] Geração automática da mensagem do pedido
+- [x] Favicon personalizado
+- [x] Deploy da aplicação
+
+---
 
 ## 🎯 Funcionalidades planejadas
 
-- [ ] Seção de produtos com cards
-- [ ] Seção Sobre com história da loja
-- [ ] Seção de Contato com links para WhatsApp e Instagram
+- [ ] Organização dos doces por categorias
+- [ ] Carrossel de produtos por categoria
+- [ ] Navegação entre produtos utilizando controles do carrossel
 - [ ] Melhorias de acessibilidade
+- [ ] Melhorias contínuas de responsividade
+- [ ] Aprimoramento da experiência do carrinho
 - [ ] Novas interações com JavaScript
 
 ---
 
 ## 📚 Aprendizados com o projeto
 
-Durante o desenvolvimento deste projeto, estou praticando:
+Durante o desenvolvimento deste projeto, estou praticando e aprimorando conhecimentos em:
 
 - Estruturação semântica de páginas com HTML
-- Estilização com classes utilitárias do Tailwind CSS v4
-- Criação de layouts responsivos com Flexbox e Grid
-- Organização de pastas e boas práticas de projeto
+- Estilização com Tailwind CSS
+- Desenvolvimento de layouts responsivos
+- Utilização de Flexbox e Grid
+- Manipulação do DOM com JavaScript
+- Eventos e interações utilizando JavaScript
+- Desenvolvimento da lógica de um carrinho de compras
+- Manipulação de produtos e quantidades no carrinho
+- Integração do site com WhatsApp
+- Organização de arquivos e estrutura de projetos
 - Controle de versão com Git e GitHub
-- Interatividade básica com JavaScript puro
+- Utilização de branches para desenvolvimento de funcionalidades
+- Organização de commits
+- Deploy e atualização de aplicações web
+- Levantamento e documentação de requisitos
 
 ---
 
 ## 🛠️ Status do projeto
 
-🚧 **Em desenvolvimento** — Novas seções e funcionalidades serão adicionadas progressivamente.
+🚧 **Em desenvolvimento**
+
+O projeto está disponível para utilização, porém continua recebendo novas funcionalidades, melhorias de interface e ajustes na experiência do usuário.
 
 ---
 
@@ -140,4 +186,4 @@ Durante o desenvolvimento deste projeto, estou praticando:
 
 Desenvolvido por **Carlos Alberto**.
 
-Este projeto faz parte dos meus estudos em desenvolvimento web, com o objetivo de evoluir como desenvolvedor Front-end.
+Projeto desenvolvido como parte da evolução dos meus conhecimentos em desenvolvimento de software, aplicando conceitos de Front-end, JavaScript, Git/GitHub e desenvolvimento de uma solução voltada para uma necessidade real.
