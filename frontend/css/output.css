@@ -893,11 +893,6 @@
       flex-basis: calc(50% - 12px);
     }
   }
-  .sm\:basis-\[calc\(50\%_-_12px\)\] {
-    @media (width >= 40rem) {
-      flex-basis: calc(50% - 12px);
-    }
-  }
   .sm\:grid-cols-3 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -981,11 +976,6 @@
     }
   }
   .lg\:basis-\[calc\(25\%-18px\)\] {
-    @media (width >= 64rem) {
-      flex-basis: calc(25% - 18px);
-    }
-  }
-  .lg\:basis-\[calc\(25\%_-_18px\)\] {
     @media (width >= 64rem) {
       flex-basis: calc(25% - 18px);
     }
