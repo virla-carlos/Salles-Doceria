@@ -2,7 +2,7 @@ const carrosseis = {
 
     brownies:   {atual: 0, total: 0},
     copos:      {atual: 0, total: 0},
-    docinho:    {atual: 0, total: 0},
+    pequenasDelicias:    {atual: 0, total: 0},
     sobremesas: {atual: 0, total: 0}
 
 };
