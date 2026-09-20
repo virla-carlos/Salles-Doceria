@@ -7,6 +7,9 @@ const carrosseis = {
 
 };
 
+let touchStartX = 0;
+let touchEndX   = 0;
+
 function getVisiveis() {
     if (window.innerWidth >= 1024) return 3;
     if (window.innerWidth >= 640) return 2;
@@ -30,9 +33,9 @@ function atualizarPosicao(categoria, animado) {
 }
 
 function moverCarrossel(categoria, direcao) {
-    const config = carrosseis[categoria];
+    const config   = carrosseis[categoria];
     const visiveis = getVisiveis();
-    const total = config.total;
+    const total    = config.total;
 
     config.atual += direcao;
 
@@ -56,6 +59,8 @@ function moverCarrossel(categoria, direcao) {
 
     atualizarPosicao(categoria, true);
 }
+
+
 
 function inicializarCarrossel(categoria) {
     const track = document.getElementById(`track-${categoria}`);
