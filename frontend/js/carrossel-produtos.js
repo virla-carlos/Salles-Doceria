@@ -60,7 +60,31 @@ function moverCarrossel(categoria, direcao) {
     atualizarPosicao(categoria, true);
 }
 
+function adicionarSwipe(categoria) {
+    const track = document.getElementById(`track-${categoria}`);
+    if (!track) return;
 
+    const container = track.parentElement;
+    if (!container) return;
+
+    let startX = 0;
+
+    container.addEventListener('touchstart', (e) =>{
+        startX = e.touches[0].clientX;
+    },{passive: true});
+
+    container.addEventListener('touchend', (e) => {
+        const diferenca = startX - e.changedTouches[0].clientX;
+
+        if (Math.abs(diferenca) < 50) return;
+
+        if (diferenca > 0) {
+            moverCarrossel(categoria, 1);
+        } else {
+            moverCarrossel(categoria, -1);
+        }
+    }, {passive: true });
+}
 
 function inicializarCarrossel(categoria) {
     const track = document.getElementById(`track-${categoria}`);
@@ -71,6 +95,7 @@ function inicializarCarrossel(categoria) {
     carrosseis[categoria].atual = 0;
 
     atualizarPosicao(categoria, false);
+    adicionarSwipe(categoria)
 }
 
 window.addEventListener('resize', () => {
