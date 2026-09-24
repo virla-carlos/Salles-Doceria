@@ -60,30 +60,31 @@ function moverCarrossel(categoria, direcao) {
     atualizarPosicao(categoria, true);
 }
 
-function adicionarSwipe(categoria) {
+function adicionarSwipe(categoria){
     const track = document.getElementById(`track-${categoria}`);
     if (!track) return;
 
-    const container = track.parentElement;
-    if (!container) return;
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
 
-    let startX = 0;
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
 
-    container.addEventListener('touchstart', (e) =>{
-        startX = e.touches[0].clientX;
-    },{passive: true});
-
-    container.addEventListener('touchend', (e) => {
-        const diferenca = startX - e.changedTouches[0].clientX;
+        const diferenca = touchStartX - touchEndX;
 
         if (Math.abs(diferenca) < 50) return;
 
         if (diferenca > 0) {
+
             moverCarrossel(categoria, 1);
+        
         } else {
+
             moverCarrossel(categoria, -1);
+
         }
-    }, {passive: true });
+    }, {passive: true});
 }
 
 function inicializarCarrossel(categoria) {
@@ -95,16 +96,16 @@ function inicializarCarrossel(categoria) {
     carrosseis[categoria].atual = 0;
 
     atualizarPosicao(categoria, false);
-    adicionarSwipe(categoria)
+    atualizarSwipe(categoria);
 }
 
 window.addEventListener('resize', () => {
     Object.keys(carrosseis).forEach(cat => {
 
         const visiveis = getVisiveis();
-        const max = carrosseis[cat].total - visiveis;
+        const max = Math.max(0, carrosseis[cat].total - visiveis);
         if (carrosseis[cat].atual > max) {
-            carrosseis[cat].atual = Math.max(0, max);
+            carrosseis[cat].atual = max;
         }
         atualizarPosicao(cat, false);
     });
